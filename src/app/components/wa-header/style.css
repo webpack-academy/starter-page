@@ -1,10 +1,8 @@
 .headerContainer {
-	padding: 1.3em;
-	display: flex;
+	margin: 1em;
 }
 
 .headerText {
-	flex: 1;
 	font-size: 4rem;
 	text-align: center;
 	border-radius: 1rem;

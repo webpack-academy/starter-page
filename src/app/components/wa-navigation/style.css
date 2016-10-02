@@ -1,0 +1,9 @@
+.nav {
+	display: flex;
+}
+
+.navItem {
+	flex: 1;
+	display: inline-block;
+}
+
