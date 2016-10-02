@@ -1,0 +1,31 @@
+.primary {
+	color: #EFECEA;
+}
+
+.secondary {
+	color: #334854;
+}
+
+.accent {
+	color: #E04462;
+}
+
+.pop {
+	color: #F9C535;
+}
+
+.primaryFill {
+	background: #EFECEA;
+}
+
+.secondaryFill {
+	background: #334854;
+}
+
+.accentFill {
+	background: #E04462;
+}
+
+.popFill {
+	background: #F9C535;
+}
