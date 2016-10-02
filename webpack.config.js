@@ -30,7 +30,7 @@ module.exports = {
 			names: ['vendor', 'inline'],
 			minChunks: Infinity
 		}),
-		new ExtractTextWebpackPlugin('[name].css'),
+		new ExtractTextWebpackPlugin({filename: '[name].css', allChunks: true}),
 		new webpack.ProgressPlugin(),
 		new HtmlWebpackPlugin({
 			template: './src/index.html'

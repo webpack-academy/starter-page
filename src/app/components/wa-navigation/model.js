@@ -7,7 +7,7 @@ export default function() {
 		component: {
 				
 		},
-		styles: styles.locals
+		styles: styles
 	}
 
 	return data;
