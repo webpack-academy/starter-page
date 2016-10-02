@@ -1,11 +1,11 @@
-import {waHeader} from './style.css';
+import styles from './style.css';
 
 export default function() {
 	const data = {
 		message: {
-			header: "Hello webpack academy!!"		
+			header: "Hello vuejs starter!!"		
 		},
-		className: waHeader
+		styles
 	}
 
 	return data;

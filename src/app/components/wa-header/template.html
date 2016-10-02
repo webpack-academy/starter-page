@@ -1,3 +1,5 @@
-<header>
-	<h1 v-bind:class="className">{{message.header}}</h1>
+<header v-bind:class="styles.headerContainer">
+	<h1 v-bind:class="styles.headerText">
+		{{message.header}}
+	</h1>
 </header>

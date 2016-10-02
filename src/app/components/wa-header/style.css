@@ -1,5 +1,12 @@
-.waHeader {
-	color: blue;
-	background: orange;
-	font-size: 24px;
+.headerContainer {
+	padding: 2em;
+	display: flex;
+}
+
+.headerText {
+	flex: 1;
+	text-align: center;
+	composes: secondary from '../../shared/colors.css';
+	composes: primaryFill from '../../shared/colors.css';
+	font-size: 4rem;
 };
