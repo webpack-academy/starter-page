@@ -1,12 +1,9 @@
 import Vue from 'vue';
 import template from './template.html';
+import data from './model';
 
 const component = {
-	data() {
-		return {
-			message: 'Hello!!'
-		};
-	},
+	data,
 	template
 };
 
