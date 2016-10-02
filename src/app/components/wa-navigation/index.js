@@ -4,7 +4,10 @@ import data from './model';
 
 const component = {
 	data,
-	template
+	template,
+	created() {
+		console.log("Holy freaking crap I'm lazy loaded");
+	}
 };
 
-export default Vue.component('wa-navigation', component);
+export default component;

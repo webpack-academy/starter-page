@@ -3,7 +3,9 @@
 }
 
 .navItem {
+	margin: 0 auto;
 	flex: 1;
-	display: inline-block;
+	list-style: none;
+	display: inline;
+	composes: popFill from '../../shared/colors.css';
 }
-

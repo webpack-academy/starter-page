@@ -4,7 +4,14 @@ import data from './model';
 
 const component = {
 	data,
-	template
+	template,
+	components: {
+		navigation: () => {
+			return System.import('../wa-navigation/').then((module)=>{
+				return module.default;
+			});
+		}
+	}
 };
 
 export default Vue.component('wa-header', component);
