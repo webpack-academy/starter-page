@@ -1,7 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const V8LazyParseWebpackPlugin = require('v8-lazy-parse-webpack-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
 module.exports = {
 	devtool: 'sourcemap',
@@ -10,7 +12,8 @@ module.exports = {
 		vendor: './src/vendor.js'
 	},
 	output: {
-		filename: '[name].chunk.js'
+		filename: '[name].chunk.js',
+		path: path.resolve(__dirname, "./dist")
 	},
 	resolve: {
 	  alias: {
@@ -30,8 +33,33 @@ module.exports = {
 			names: ['vendor', 'inline'],
 			minChunks: Infinity
 		}),
+		new V8LazyParseWebpackPlugin(),
+		// new webpack.optimize.UglifyJsPlugin({
+		//     output: {
+		//         comments: false
+		//     },
+		//     compress: {
+		//         warnings: false,
+		//         conditionals: true,
+		//         unused: true,
+		//         comparisons: true,
+		//         sequences: true,
+		//         dead_code: true,
+		//         evaluate: true,
+		//         if_return: true,
+		//         join_vars: true,
+		//         negate_iife: false
+		//     }
+		// }),
 		new ExtractTextWebpackPlugin({filename: '[name].css', allChunks: true}),
 		new webpack.ProgressPlugin(),
+        new CompressionWebpackPlugin({
+            asset: "[path].gz[query]",
+            algorithm: "gzip",
+            test: /\.js$|\.html$/,
+            threshold: 10240,
+            minRatio: 0.8
+        }),		
 		new HtmlWebpackPlugin({
 			template: './src/index.html'
 		}),
