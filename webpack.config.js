@@ -12,9 +12,11 @@ module.exports = {
 		vendor: './src/vendor.js'
 	},
 	output: {
-		filename: '[name].chunk.js',
+        filename: "[chunkhash].js",
+        chunkFilename: "[chunkhash].js",
 		path: path.resolve(__dirname, "./dist")
 	},
+	recordsOutputPath: path.join(__dirname, "js", "records.json"),
 	resolve: {
 	  alias: {
 	    vue: 'vue/dist/vue.js'
@@ -29,28 +31,32 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new webpack.optimize.CommonsChunkPlugin({
-			names: ['vendor', 'inline'],
-			minChunks: Infinity
-		}),
-		new V8LazyParseWebpackPlugin(),
-		// new webpack.optimize.UglifyJsPlugin({
-		//     output: {
-		//         comments: false
-		//     },
-		//     compress: {
-		//         warnings: false,
-		//         conditionals: true,
-		//         unused: true,
-		//         comparisons: true,
-		//         sequences: true,
-		//         dead_code: true,
-		//         evaluate: true,
-		//         if_return: true,
-		//         join_vars: true,
-		//         negate_iife: false
-		//     }
+	    new webpack.optimize.AggressiveSplittingPlugin({
+	        minSize: 100,
+	        maxSize: 10000
+	    }),
+		// new webpack.optimize.CommonsChunkPlugin({
+		// 	names: ['vendor', 'inline'],
+		// 	minChunks: Infinity
 		// }),
+		new V8LazyParseWebpackPlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+		    output: {
+		        comments: false
+		    },
+		    compress: {
+		        warnings: false,
+		        conditionals: true,
+		        unused: true,
+		        comparisons: true,
+		        sequences: true,
+		        dead_code: true,
+		        evaluate: true,
+		        if_return: true,
+		        join_vars: true,
+		        negate_iife: false
+		    }
+		}),
 		new ExtractTextWebpackPlugin({filename: '[name].css', allChunks: true}),
 		new webpack.ProgressPlugin(),
         new CompressionWebpackPlugin({
